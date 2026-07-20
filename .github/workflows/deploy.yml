@@ -45,6 +45,20 @@ jobs:
       - name: Check Code Formatting
         run: npm run format:check
 
+      - name: OWASP Dependency Check
+        uses: dependency-check/Dependency-Check_Action@main
+        with:
+          project: Hospital-Frontend
+          path: hams
+          format: HTML
+          out: reports 
+
+      - name: Upload OWASP Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: owasp-report
+          path: reports
+
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
