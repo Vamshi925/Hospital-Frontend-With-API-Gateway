@@ -44,19 +44,6 @@ jobs:
 
       - name: Check Code Formatting
         run: npm run format:check
-
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarqube-scan-action@v5
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-            -Dsonar.projectKey=Vamshi925_Hospital-Frontend-With-API-Gateway
-            -Dsonar.organization=vamshi925
-            -Dsonar.sources=hams/src
-            -Dsonar.tests=hams/src
-            -Dsonar.test.inclusions=**/*.test.js
-            -Dsonar.javascript.lcov.reportPaths=hams/coverage/lcov.info
             
       - name: OWASP Dependency Check
         uses: dependency-check/Dependency-Check_Action@main
@@ -71,7 +58,28 @@ jobs:
         with:
           name: owasp-report
           path: reports
-          
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarqube-scan-action@v5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        with:
+          args: >
+            -Dsonar.projectKey=Vamshi925_Hospital-Frontend-With-API-Gateway
+            -Dsonar.organization=vamshi925
+            -Dsonar.sources=hams/src
+            -Dsonar.tests=hams/src
+            -Dsonar.test.inclusions=**/*.test.js
+            -Dsonar.javascript.lcov.reportPaths=hams/coverage/lcov.info
+
+      - name: SonarCloud Quality Gate
+        uses: SonarSource/sonarqube-quality-gate-action@v1.2.0
+        timeout-minutes: 5
+        env:
+         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+         
       - name: Trivy FileSystem Scan
         uses: aquasecurity/trivy-action@v0.36.0
         with:
