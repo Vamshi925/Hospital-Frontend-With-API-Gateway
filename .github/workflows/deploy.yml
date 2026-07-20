@@ -45,6 +45,19 @@ jobs:
       - name: Check Code Formatting
         run: npm run format:check
 
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarqube-scan-action@v5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=Vamshi925_Hospital-Frontend-With-API-Gateway
+            -Dsonar.organization=vamshi925
+            -Dsonar.sources=hams/src
+            -Dsonar.tests=hams/src
+            -Dsonar.test.inclusions=**/*.test.js
+            -Dsonar.javascript.lcov.reportPaths=hams/coverage/lcov.info
+            
       - name: OWASP Dependency Check
         uses: dependency-check/Dependency-Check_Action@main
         with:
