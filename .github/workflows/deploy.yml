@@ -28,6 +28,11 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
+      - name: Check installed packages
+        run: |
+          npm ls react-router-dom
+          ls node_modules/react-router-dom
+
       - name: Run ESLint
         run: npx eslint src --ext .js,.jsx
 
