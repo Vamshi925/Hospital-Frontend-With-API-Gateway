@@ -11,7 +11,9 @@
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); /* Consistent shadow */
   margin: 20px auto;
   max-width: 600px; /* Wider max-width */
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
   border: 1px solid #edf2f7;
 }
 
@@ -21,7 +23,7 @@
 }
 
 .appointment-confirmation-container h1 {
-  color: #4CAF50; /* Green for success */
+  color: #4caf50; /* Green for success */
   margin-bottom: 20px;
   font-size: 2.2em; /* Larger heading */
   text-align: center;
@@ -44,7 +46,10 @@
   color: white;
   font-size: 1.1em;
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+  transition:
+    background-color 0.3s ease-in-out,
+    transform 0.2s ease-in-out,
+    box-shadow 0.3s ease-in-out;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -60,38 +65,37 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .appointment-confirmation-container {
-      padding: 20px;
+    padding: 20px;
   }
 
   .appointment-confirmation-container h1 {
-      font-size: 2em;
+    font-size: 2em;
   }
 
   .appointment-confirmation-container p {
-      font-size: 1em;
+    font-size: 1em;
   }
 }
 
 /* Added for very small screens */
 @media (max-width: 480px) {
   .appointment-confirmation-container {
-      padding: 15px;
+    padding: 15px;
   }
 
   .appointment-confirmation-container h1 {
-      font-size: 1.8em;
+    font-size: 1.8em;
   }
 
   .appointment-confirmation-container p {
-      font-size: 0.95em;
+    font-size: 0.95em;
   }
 
   .appointment-confirmation-container .go-back-button {
-      font-size: 1rem;
-      padding: 10px 18px;
+    font-size: 1rem;
+    padding: 10px 18px;
   }
 }

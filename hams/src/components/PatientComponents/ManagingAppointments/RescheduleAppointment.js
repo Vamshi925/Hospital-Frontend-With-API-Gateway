@@ -5,7 +5,7 @@ import axios from 'axios';
 import Header from '../../Header';
 import NavigationBar from '../../NavigationBar';
 import Footer from '../../Footer';
-import API_BASE_URL from "../../../config";
+import API_BASE_URL from '../../../config';
 
 const RescheduleAppointment = () => {
   const navigate = useNavigate();
@@ -67,23 +67,24 @@ const RescheduleAppointment = () => {
   const fetchDoctorAvailabilityForReschedule = (doctorId) => {
     if (doctorId) {
       const token = localStorage.getItem('jwtToken');
-      axios.get(`${API_BASE_URL}/doctor-service/api/doctorAvailability/getSchedule/${doctorId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-        .then(response => {
+      axios
+        .get(`${API_BASE_URL}/doctor-service/api/doctorAvailability/getSchedule/${doctorId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
           if (response.data.success && response.data.data) {
             const today = new Date();
             const futureDate = new Date();
             futureDate.setDate(today.getDate() + 60);
 
             const formattedData = response.data.data
-              .filter(item => {
+              .filter((item) => {
                 const itemDate = new Date(item.availableDate);
                 return itemDate >= today && itemDate <= futureDate;
               })
-              .map(item => ({
+              .map((item) => ({
                 date: item.availableDate,
                 available: item.isAvailable === 1,
                 session: item.session,
@@ -98,7 +99,7 @@ const RescheduleAppointment = () => {
             setError('Could not fetch doctor availability.');
           }
         })
-        .catch(error => {
+        .catch((error) => {
           setDoctorAvailabilityData([]);
           setIsAvailabilityPopupVisible(false);
           setError('Error fetching doctor availability: ' + error.message);
@@ -155,30 +156,39 @@ const RescheduleAppointment = () => {
 
     try {
       const token = localStorage.getItem('jwtToken');
-      const response = await axios.post('${API_BASE_URL}/login-service/api/patients/rescheduleAppointment', reschedulePayload, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await axios.post(
+        '${API_BASE_URL}/login-service/api/patients/rescheduleAppointment',
+        reschedulePayload,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
-      console.log("Reschedule Response:", response);
+      console.log('Reschedule Response:', response);
 
       if (response.data.success) {
         setSuccessMessage(response.data.message || 'Appointment rescheduled successfully!');
-        
+
         navigate('/appointment-reschedule-confirmation');
-        
       } else {
-        const errorMessage = response.data.data?.message || response.data.message || "Failed to reschedule appointment";
+        const errorMessage =
+          response.data.data?.message ||
+          response.data.message ||
+          'Failed to reschedule appointment';
         setError(errorMessage);
         setBookingSuccess(false);
         setBookingError(errorMessage);
       }
     } catch (error) {
-      console.error("Reschedule Error:", error);
+      console.error('Reschedule Error:', error);
 
-      let errorMessage = "Error rescheduling appointment";
+      let errorMessage = 'Error rescheduling appointment';
 
       if (error.response?.data) {
-        errorMessage = error.response.data.data?.message || error.response.data.message || "Error rescheduling appointment";
+        errorMessage =
+          error.response.data.data?.message ||
+          error.response.data.message ||
+          'Error rescheduling appointment';
       }
 
       setError(errorMessage);
@@ -208,12 +218,7 @@ const RescheduleAppointment = () => {
           <>
             <div className="form-group">
               <label htmlFor="doctorName">Doctor Name:</label>
-              <input
-                type="text"
-                id="doctorName"
-                value={appointmentDetails.doctorName}
-                readOnly
-              />
+              <input type="text" id="doctorName" value={appointmentDetails.doctorName} readOnly />
             </div>
 
             <div className="form-group">
@@ -228,12 +233,7 @@ const RescheduleAppointment = () => {
 
             <div className="form-group">
               <label htmlFor="oldSession">Old Session:</label>
-              <input
-                type="text"
-                id="oldSession"
-                value={appointmentDetails.oldSession}
-                readOnly
-              />
+              <input type="text" id="oldSession" value={appointmentDetails.oldSession} readOnly />
             </div>
 
             <div className="form-group">
@@ -242,20 +242,14 @@ const RescheduleAppointment = () => {
                 <button
                   type="button"
                   className="view-availability"
-                  onClick={() =>
-                    fetchDoctorAvailabilityForReschedule(
-                      appointmentDetails.doctorId
-                    )
-                  }
+                  onClick={() => fetchDoctorAvailabilityForReschedule(appointmentDetails.doctorId)}
                 >
                   View Availability
                 </button>
               ) : (
                 <input type="text" value="Doctor ID not available" disabled />
               )}
-              {rescheduleDate && (
-                <p>Selected Date: {rescheduleDate?.toLocaleDateString()}</p>
-              )}
+              {rescheduleDate && <p>Selected Date: {rescheduleDate?.toLocaleDateString()}</p>}
               {selectedSession && (
                 <p>
                   Selected Session:{' '}
@@ -279,22 +273,16 @@ const RescheduleAppointment = () => {
                         title={
                           item.available
                             ? `Available for ${
-                                sessions.find((s) => s.value === item.session)
-                                  ?.label
+                                sessions.find((s) => s.value === item.session)?.label
                               }`
                             : 'Unavailable'
                         }
                         onClick={() =>
-                          item.available &&
-                          selectDateAndSession(item.date, item.session)
+                          item.available && selectDateAndSession(item.date, item.session)
                         }
                       >
-                        <span className="day-of-week">
-                          {getDayOfWeek(item.date)}
-                        </span>
-                        <span className="date-number">
-                          {getMonthAndDate(item.date)}
-                        </span>
+                        <span className="day-of-week">{getDayOfWeek(item.date)}</span>
+                        <span className="date-number">{getMonthAndDate(item.date)}</span>
                         <span className="session-indicator dynamic">
                           {sessions.find((s) => s.value === item.session)?.label}
                         </span>

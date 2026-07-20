@@ -38,21 +38,23 @@ h1 {
   font-size: 1.1em;
 }
 
-.filter-container input[type="text"],
-.filter-container input[type="date"] {
+.filter-container input[type='text'],
+.filter-container input[type='date'] {
   padding: 12px;
   border: 1px solid #81ecec; /* Cyan border */
   border-radius: 8px;
   font-size: 1em;
   color: #333;
   width: 200px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
   outline: none;
   background-color: #f0ffff; /* Very light cyan input background */
 }
 
-.filter-container input[type="text"]:focus,
-.filter-container input[type="date"]:focus {
+.filter-container input[type='text']:focus,
+.filter-container input[type='date']:focus {
   border-color: #00cec9; /* Teal focus border */
   box-shadow: 0 4px 8px rgba(0, 206, 201, 0.2);
 }
@@ -68,7 +70,9 @@ h1 {
   background-color: #eceff1; /* Light blue-gray */
   border-radius: 12px;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
   padding: 20px;
   border: 1px solid #e0f2f7; /* Very light blue border */
   line-height: 1.6;
@@ -111,51 +115,51 @@ h1 {
 
 @media (max-width: 768px) {
   .container {
-      width: 95%;
-      padding: 20px;
+    width: 95%;
+    padding: 20px;
   }
 
   .filter-container {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 15px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
   }
 
   .filter-container label,
-  .filter-container input[type="text"],
-  .filter-container input[type="date"] {
-      width: 100%;
-      margin-bottom: 10px;
+  .filter-container input[type='text'],
+  .filter-container input[type='date'] {
+    width: 100%;
+    margin-bottom: 10px;
   }
 
   .medical-history-grid {
-      grid-template-columns: 1fr;
-      gap: 20px;
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   h1 {
-      font-size: 2.5em;
-      margin-bottom: 30px;
+    font-size: 2.5em;
+    margin-bottom: 30px;
   }
 }
 
 @media (max-width: 480px) {
   h1 {
-      font-size: 2em;
-      margin-bottom: 25px;
+    font-size: 2em;
+    margin-bottom: 25px;
   }
 
   .grid-label {
-      width: auto;
-      margin-right: 8px;
-      font-size: 0.95em;
+    width: auto;
+    margin-right: 8px;
+    font-size: 0.95em;
   }
 
   .grid-value {
-      font-size: 0.95em;
+    font-size: 0.95em;
   }
 
   .medical-history-grid-item {
-      padding: 15px;
+    padding: 15px;
   }
 }

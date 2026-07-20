@@ -2,7 +2,7 @@ import React from 'react';
 import { CheckCircle, Bell } from 'lucide-react';
 import axios from 'axios';
 import './Notification.css';
-import API_BASE_URL from "../../config";
+import API_BASE_URL from '../../config';
 
 /**
  * @typedef {object} Notification
@@ -21,7 +21,7 @@ import API_BASE_URL from "../../config";
 
 const PatientNotification = ({ notifications, setNotifications, onClose, setUnreadCount }) => {
   const token = localStorage.getItem('jwtToken');
-  const userId = localStorage.getItem('userId'); 
+  const userId = localStorage.getItem('userId');
 
   const handleMarkAsRead = async (notificationId) => {
     try {
@@ -46,7 +46,10 @@ const PatientNotification = ({ notifications, setNotifications, onClose, setUnre
         }
         console.log(`Notification ${notificationId} marked as read.`);
       } else {
-        console.error(`Failed to mark notification ${notificationId} as read:`, response.data.message);
+        console.error(
+          `Failed to mark notification ${notificationId} as read:`,
+          response.data.message
+        );
       }
     } catch (error) {
       console.error(`Error marking notification ${notificationId} as read:`, error);
@@ -55,7 +58,7 @@ const PatientNotification = ({ notifications, setNotifications, onClose, setUnre
 
   const handleMarkAllAsRead = async () => {
     if (!userId) {
-      console.error("User ID not found in local storage.");
+      console.error('User ID not found in local storage.');
       return;
     }
     try {
@@ -91,10 +94,18 @@ const PatientNotification = ({ notifications, setNotifications, onClose, setUnre
             Notifications
           </h2>
           <div className="notifications-actions">
-            <button onClick={handleMarkAllAsRead} className="mark-all-read-button small" aria-label="Mark all notifications as read">
+            <button
+              onClick={handleMarkAllAsRead}
+              className="mark-all-read-button small"
+              aria-label="Mark all notifications as read"
+            >
               Mark All Read
             </button>
-            <button onClick={onClose} className="close-button small" aria-label="Close notifications">
+            <button
+              onClick={onClose}
+              className="close-button small"
+              aria-label="Close notifications"
+            >
               Cancel
             </button>
           </div>
@@ -102,10 +113,7 @@ const PatientNotification = ({ notifications, setNotifications, onClose, setUnre
         <ul className="notifications-list small">
           {notifications.length > 0 ? (
             notifications.map((notification) => (
-              <li
-                key={notification.notificationId}
-                className="notification-item small"
-              >
+              <li key={notification.notificationId} className="notification-item small">
                 <span className="notification-message small">{notification.message}</span>
                 <button
                   onClick={() => handleMarkAsRead(notification.notificationId)}

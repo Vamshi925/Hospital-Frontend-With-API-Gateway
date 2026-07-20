@@ -13,10 +13,10 @@
 
 @keyframes fadeIn {
   from {
-      opacity: 0;
+    opacity: 0;
   }
   to {
-      opacity: 1;
+    opacity: 1;
   }
 }
 
@@ -43,8 +43,8 @@
   color: #333;
 }
 
-.form-group input[type="text"],
-.form-group input[type="date"] {
+.form-group input[type='text'],
+.form-group input[type='date'] {
   width: 100%;
   padding: 12px;
   border: 1px solid #ddd;
@@ -54,8 +54,8 @@
   transition: border-color 0.3s ease;
 }
 
-.form-group input[type="text"]:focus,
-.form-group input[type="date"]:focus {
+.form-group input[type='text']:focus,
+.form-group input[type='date']:focus {
   outline: none;
   border-color: #007bff;
   box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
@@ -67,31 +67,33 @@
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
   margin-top: 10px;
 }
 
-.edit-profile-form button[type="submit"] {
+.edit-profile-form button[type='submit'] {
   background-color: #007bff;
   color: white;
 }
 
-.edit-profile-form button[type="submit"]:hover {
+.edit-profile-form button[type='submit']:hover {
   background-color: #0056b3;
   transform: translateY(-2px);
 }
 
-.edit-profile-form button[type="submit"]:disabled {
+.edit-profile-form button[type='submit']:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
 
-.edit-profile-form button[type="button"] {
+.edit-profile-form button[type='button'] {
   background-color: #6c757d;
   color: white;
 }
 
-.edit-profile-form button[type="button"]:hover {
+.edit-profile-form button[type='button']:hover {
   background-color: #5a6268;
   transform: translateY(-2px);
 }
@@ -122,15 +124,16 @@
 
 @keyframes spin {
   0% {
-      transform: rotate(0deg);
+    transform: rotate(0deg);
   }
 
   100% {
-      transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
-.button-group { /* Added for button layout */
+.button-group {
+  /* Added for button layout */
   display: flex;
   justify-content: flex-end; /* Push buttons to the right */
   gap: 10px; /* Add some horizontal space between buttons */

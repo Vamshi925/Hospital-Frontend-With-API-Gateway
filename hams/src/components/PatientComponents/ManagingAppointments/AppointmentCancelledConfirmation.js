@@ -6,26 +6,26 @@ import NavigationBar from '../../NavigationBar';
 import Footer from '../../Footer';
 
 const AppointmentCancelledConfirmation = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const handleGoBack = () => {
-        navigate('/appointments');
-    };
+  const handleGoBack = () => {
+    navigate('/appointments');
+  };
 
-    return (
-        <div>
-            <Header />
-            <NavigationBar />
-            <div className="appointment-confirmation-container">
-                <h1>Appointment Cancelled Successfully!</h1>
-                <p>Your appointment has been cancelled.</p>
-                <button onClick={handleGoBack} className="go-back-button">
-                    Go to My Appointments
-                </button>
-            </div>
-            <Footer />
-        </div>
-    );
+  return (
+    <div>
+      <Header />
+      <NavigationBar />
+      <div className="appointment-confirmation-container">
+        <h1>Appointment Cancelled Successfully!</h1>
+        <p>Your appointment has been cancelled.</p>
+        <button onClick={handleGoBack} className="go-back-button">
+          Go to My Appointments
+        </button>
+      </div>
+      <Footer />
+    </div>
+  );
 };
 
 export default AppointmentCancelledConfirmation;

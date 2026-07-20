@@ -149,12 +149,12 @@
 
 @media (max-width: 768px) {
   .dashboard-grid {
-      grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
   }
 }
 
 .welcome-message {
-   /* Makes the text bold */
+  /* Makes the text bold */
   font-size: 1em; /* Sets a large font size (2 times the default) */
   border: 1px solid #ddd;
   padding: 15px;
