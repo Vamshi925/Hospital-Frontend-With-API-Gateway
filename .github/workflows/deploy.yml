@@ -11,8 +11,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    working-directory: hams
-
+    defaults:
+     run:
+       working-directory: hams
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
