@@ -79,6 +79,7 @@ jobs:
           docker build \
            -t ${{ secrets.DOCKER_USERNAME }}/hospital-frontend:latest \
            -t ${{ secrets.DOCKER_USERNAME }}/hospital-frontend:${{ github.sha }} \
+           .
 
       - name: List Docker Images
         run: docker images
