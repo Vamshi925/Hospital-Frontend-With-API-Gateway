@@ -95,6 +95,7 @@ jobs:
       - name: Push Docker Image
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/hospital-frontend:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/hospital-frontend:${{ github.sha }}
 
   deploy:
     needs: build
