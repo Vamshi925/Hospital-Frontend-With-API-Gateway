@@ -53,6 +53,15 @@ jobs:
           format: HTML
           out: reports 
 
+      - name: Trivy FileSystem Scan
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          scan-type: 'fs'
+          scan-ref: './hams'
+          format: 'table'
+          exit-code: 0
+          severity: 'CRITICAL,HIGH'
+
       - name: Upload OWASP Report
         uses: actions/upload-artifact@v4
         with:
