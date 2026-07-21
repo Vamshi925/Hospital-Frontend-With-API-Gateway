@@ -72,14 +72,8 @@ jobs:
             -Dsonar.tests=hams/src
             -Dsonar.test.inclusions=**/*.test.js
             -Dsonar.javascript.lcov.reportPaths=hams/coverage/lcov.info
-
-      - name: SonarCloud Quality Gate
-        uses: SonarSource/sonarqube-quality-gate-action@v1.2.0
-        timeout-minutes: 5
-        env:
-         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-
+            -Dsonar.qualitygate.wait=true
+            
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/node@0.4.0
         continue-on-error: true
