@@ -182,7 +182,7 @@ const DynamicDoctorAppointment = () => {
       try {
         console.log('Booking Data:', bookingData);
         const response = await axios.post(
-          '${API_BASE_URL}/login-service/api/patients/bookAppointment',
+          `${API_BASE_URL}/login-service/api/patients/bookAppointment`,
           bookingData,
           {
             headers: { Authorization: `Bearer ${token}` },
