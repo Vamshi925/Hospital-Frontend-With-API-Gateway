@@ -157,7 +157,7 @@ const RescheduleAppointment = () => {
     try {
       const token = localStorage.getItem('jwtToken');
       const response = await axios.post(
-        '${API_BASE_URL}/login-service/api/patients/rescheduleAppointment',
+        `${API_BASE_URL}/login-service/api/patients/rescheduleAppointment`,
         reschedulePayload,
         {
           headers: { Authorization: `Bearer ${token}` },
