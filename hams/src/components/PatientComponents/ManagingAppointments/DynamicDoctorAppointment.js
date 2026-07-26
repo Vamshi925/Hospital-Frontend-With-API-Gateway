@@ -34,7 +34,7 @@ const DynamicDoctorAppointment = () => {
   useEffect(() => {
     const token = getJwtToken();
     axios
-      .get('${API_BASE_URL}/doctor-service/specialization/getAll', {
+      .get('${API_BASE_URL}/doctor-service/api/specialization/getAll', {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
