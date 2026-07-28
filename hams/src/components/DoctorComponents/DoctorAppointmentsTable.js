@@ -106,7 +106,7 @@ function DoctorAppointmentsTable() {
   const handleFormSubmit = async (medicalHistory) => {
     try {
       const token = localStorage.getItem('jwtToken');
-      const response = await fetch('${API_BASE_URL}/doctor-service/api/doctors/markAsCompleted', {
+      const response = await fetch(`${API_BASE_URL}/doctor-service/api/doctors/markAsCompleted`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
