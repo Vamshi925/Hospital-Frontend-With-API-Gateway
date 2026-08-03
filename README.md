@@ -107,8 +107,8 @@ Login      Doctor      Appointment    Medical History
 ## Clone Repository
 
 ```bash
-git clone <repository-url>
-cd Frontend-With-Security
+git clone https://github.com/Vamshi925/Hospital-Frontend-With-API-Gateway/
+cd hams
 ```
 
 ## Install Dependencies
